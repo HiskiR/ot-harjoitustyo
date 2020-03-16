@@ -1,2 +1,2 @@
-#Ohjelmistotekniikka, harjoitustyö
+# Ohjelmistotekniikka, harjoitustyö
 Tämä *on* ohjelmistotekniikan **harjoitustyö**
