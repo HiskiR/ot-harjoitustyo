@@ -1,0 +1,209 @@
+commit 8d0d27e4e94bc665e2d0263eb5f9c32fa268c35c
+
+Author: Hiski Ruuska <hiski.r@gmail.com>
+
+Date:   Mon Mar 16 10:50:07 2020 +0200
+
+
+
+    poistettu file1 uudelleennimetty file2
+
+
+
+ file2           | 0
+
+ file1 => file22 | 0
+
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+
+
+commit 92ded24b01266f568cd5b674c738cebeea5d467b
+
+Author: Hiski Ruuska <hiski.r@gmail.com>
+
+Date:   Mon Mar 16 10:46:46 2020 +0200
+
+
+
+    files 1,2,3
+
+
+
+ file1 | 0
+
+ file2 | 0
+
+ file3 | 0
+
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+
+
+commit 3520a908821b80678811aa81fbda6dc710e06d9d
+
+Author: Hiski Ruuska <hiski.r@gmail.com>
+
+Date:   Mon Mar 16 10:40:12 2020 +0200
+
+
+
+    muutoksia ekaan ja kolmanteen
+
+
+
+ eka.txt    | 2 +-
+
+ kolmas.txt | 3 ++-
+
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+
+
+commit 8024f4e713c8592fc779644f55c95c182da698fd
+
+Author: Hiski Ruuska <hiski.r@gmail.com>
+
+Date:   Mon Mar 16 10:36:35 2020 +0200
+
+
+
+    tiedosto.txt nimi muutettu eka.txt
+
+
+
+ tiedosto.txt => eka.txt | 0
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+
+
+commit fd18759317017090ebb905747fa3f4dd6c9d9e68
+
+Author: Hiski Ruuska <hiski.r@gmail.com>
+
+Date:   Mon Mar 16 10:34:29 2020 +0200
+
+
+
+    poistettu toinen.txt
+
+
+
+ toinen.txt | 1 -
+
+ 1 file changed, 1 deletion(-)
+
+
+
+commit 42db33b1b4ef61d56b44b15a3c3b17cfffb8d6c9
+
+Author: Hiski Ruuska <hiski.r@gmail.com>
+
+Date:   Mon Mar 16 10:31:42 2020 +0200
+
+
+
+    poistetu ja lisätty tekstiä
+
+
+
+ tiedosto.txt | 3 +--
+
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+
+
+commit a747fa0e9a4797b6569e2ac4159db6443f4720c9
+
+Author: Hiski Ruuska <hiski.r@gmail.com>
+
+Date:   Mon Mar 16 10:28:05 2020 +0200
+
+
+
+    tiedostoon kopioitu tekstiä
+
+
+
+ tiedosto.txt | 5 +++++
+
+ 1 file changed, 5 insertions(+)
+
+
+
+commit 16307bd4d12161154e10f7cbea2cb876d47dc818
+
+Author: Hiski Ruuska <hiski.r@gmail.com>
+
+Date:   Mon Mar 16 10:01:57 2020 +0200
+
+
+
+    toinen, kolmas ja stuff
+
+
+
+ kolmas.txt      | 1 +
+
+ stuff/jokin.txt | 0
+
+ toinen.txt      | 1 +
+
+ 3 files changed, 2 insertions(+)
+
+
+
+commit 125141270336155de497c224139c1cc3b460b78a
+
+Author: Hiski Ruuska <hiski.r@gmail.com>
+
+Date:   Mon Mar 16 09:58:05 2020 +0200
+
+
+
+    kolmas.txt
+
+
+
+ kolmas.txt | 0
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+
+
+commit 53628d051ba4514a07946a2acbefe664bc426349
+
+Author: Hiski Ruuska <hiski.r@gmail.com>
+
+Date:   Mon Mar 16 09:55:47 2020 +0200
+
+
+
+    muutos ja lisäys
+
+
+
+ tiedosto.txt | 1 +
+
+ toinen.txt   | 0
+
+ 2 files changed, 1 insertion(+)
+
+
+
+commit a316039953e09a7c98ed59a719b716dcc19abf23
+
+Author: Hiski Ruuska <hiski.r@gmail.com>
+
+Date:   Mon Mar 16 09:53:09 2020 +0200
+
+
+
+    tiedosto.txt luotu
+
+
+
+ tiedosto.txt | 0
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
