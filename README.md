@@ -8,6 +8,6 @@
 
 ## Dokumentaatio
 
-[Määrittelydokumentti](https://github.com/HiskiR/ot-harjoitustyo/blob/master/dokumentaatio/maarittelydokumentti.md)
+[Vaatimusmäärittely](https://github.com/HiskiR/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 [Työaikakirjanpito](https://github.com/HiskiR/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
