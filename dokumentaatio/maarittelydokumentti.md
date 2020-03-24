@@ -13,7 +13,7 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli eli normaali kä
 ### Ennen kirjautumista
 
 - käyttäjä voi luoda käyttäjätunnuksen
-  - käyttäjätunnuksen täytyy olla uniikki ja pituudeltaan vähintään 3 merkkiä
+  - käyttäjätunnuksen tulee olla uniikki ja pituudeltaan vähintään 3 merkkiä
 
 - käyttäjä voi kirjautua
   - kirjautuminen onnistuu syötettäessä kirjautumislomakkeeseen olemassaoleva käyttäjätunnus
