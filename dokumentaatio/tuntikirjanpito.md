@@ -3,4 +3,5 @@
 | päivä | aika | mitä tein  |
 | :----:|:-----| :-----|
 | 24.3. |  2   |  määrittelydokumentti|
-| yht   |  2   |  | 
+| 31.3. |  6   |  kirjautuminen ja rekisteröityminen|
+| yht   |  8   |  | 
