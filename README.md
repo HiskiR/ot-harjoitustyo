@@ -1,5 +1,5 @@
 # MeTuSe
-Helsingin Yliopiston ohjelmistotekniikan kurssin harjoitustyö.
+Helsingin Yliopiston ohjelmistotekniikka-kurssin harjoitustyö.
 Sovelluksen avulla käyttäjät voivat seurata tulojaan ja menojaan.
 
 ## Dokumentaatio
