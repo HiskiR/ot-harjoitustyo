@@ -7,6 +7,7 @@ package metuse.domain;
 public class User {
     final private String name;
     final private String username;
+    private int id;
 
     public User(String name, String username) {
         this.name = name;
@@ -19,6 +20,14 @@ public class User {
 
     public String getUsername() {
         return this.username;
-    }    
+    }
+    
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    public int getId() {
+        return this.id;
+    }
     
 }

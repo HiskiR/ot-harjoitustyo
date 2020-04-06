@@ -17,6 +17,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import metuse.dao.SQLUserDao;
 import metuse.dao.Database;
+import metuse.dao.SQLExpenseDao;
+import metuse.dao.SQLIncomeDao;
 import metuse.domain.MetuseService;
 
 public class MetuseUi extends Application {
@@ -24,32 +26,25 @@ public class MetuseUi extends Application {
     private Scene registerScene;
     private Scene loginScene;
     private Scene mainScene;
+    private Scene createExpenseScene;
+    private Scene createIncomeScene;
     private Label menuLabel = new Label();
     private MetuseService metuseService;
-    private Stage primaryStage;
-    private Label message;
-    
+
     @Override
     public void init() throws Exception {
         Database db = new Database();
         SQLUserDao uDao = new SQLUserDao(db);
-        metuseService = new MetuseService(uDao);
+        SQLExpenseDao eDao = new SQLExpenseDao(db);
+        SQLIncomeDao iDao = new SQLIncomeDao(db);
+        metuseService = new MetuseService(uDao, eDao, iDao);
     }
 
     @Override
     public void start(Stage primaryStage) {
-        message = new Label();
-        this.primaryStage = primaryStage;
-        createLoginScene();
-        createRegisterScene();
-        createMainScene();
-        primaryStage.setTitle("MeTuSe");
-        primaryStage.setScene(loginScene);
-        primaryStage.show();
 
-    }
-
-    public void createLoginScene() {
+        //login
+        Label loginMessage = new Label();
         VBox loginPane = new VBox(20);
         HBox inputPane = new HBox(20);
         loginPane.setPadding(new Insets(20));
@@ -64,12 +59,12 @@ public class MetuseUi extends Application {
             String username = usernameInput.getText();
             menuLabel.setText(username + " logged in");
             if (metuseService.login(username)) {
-                message.setText("");
+                loginMessage.setText("");
                 primaryStage.setScene(mainScene);
                 usernameInput.setText("");
             } else {
-                message.setText("user does not exist");
-                message.setTextFill(Color.RED);
+                loginMessage.setText("user does not exist");
+                loginMessage.setTextFill(Color.RED);
             }
         });
 
@@ -79,12 +74,12 @@ public class MetuseUi extends Application {
         });
 
         loginPane.getChildren()
-                .addAll(message, inputPane, loginButton, createButton);
+                .addAll(loginMessage, inputPane, loginButton, createButton);
 
         loginScene = new Scene(loginPane, 500, 350);
-    }
 
-    public void createRegisterScene() {
+        //register
+        Label registerMessage = new Label();
         VBox newUserPane = new VBox(20);
 
         HBox newUsernamePane = new HBox(20);
@@ -109,43 +104,159 @@ public class MetuseUi extends Application {
             String name = newNameInput.getText();
 
             if (username.length() < 3 || name.length() < 3) {
-                message.setText("username or name too short");
-                message.setTextFill(Color.RED);
+                registerMessage.setText("username or name too short");
+                registerMessage.setTextFill(Color.RED);
             } else try {
                 if (metuseService.createUser(name, username)) {
-                    message.setText("new user created");
-                    message.setTextFill(Color.GREEN);
+                    loginMessage.setText("new user created");
+                    loginMessage.setTextFill(Color.GREEN);
                     primaryStage.setScene(loginScene);
                 } else {
-                    message.setText("username has to be unique");
-                    message.setTextFill(Color.RED);
+                    registerMessage.setText("username has to be unique");
+                    registerMessage.setTextFill(Color.RED);
 
                 }
             } catch (SQLException ex) {
                 System.out.println(ex);
             }
         });
-        newUserPane.getChildren().addAll(message, newUsernamePane, newNamePane, createNewUserButton);
-
+        newUserPane.getChildren().addAll(registerMessage, newUsernamePane, newNamePane, createNewUserButton);
         registerScene = new Scene(newUserPane, 500, 350);
-    }
-    
-    public void createMainScene() {
-        ScrollPane todoScollbar = new ScrollPane();       
-        BorderPane mainPane = new BorderPane(todoScollbar);
+
+        //expense
+        Label expenseMessage = new Label();
+        VBox newExpensePane = new VBox(20);
+        
+        HBox newExpenseAmountPane = new HBox(20);
+        newExpenseAmountPane.setPadding(new Insets(20));
+        TextField newExpenseAmountInput = new TextField();
+        Label newAmountLabel = new Label("amount");
+        newAmountLabel.setPrefWidth(100);
+        newExpenseAmountPane.getChildren().addAll(newAmountLabel, newExpenseAmountInput);
+        
+        HBox newExpenseNamePane = new HBox(20);
+        newExpenseNamePane.setPadding(new Insets(20));
+        TextField newExpenseNameInput = new TextField();
+        Label newExpenseNameLabel = new Label("name");
+        newExpenseNameLabel.setPrefWidth(100);
+        newExpenseNamePane.getChildren().addAll(newExpenseNameLabel, newExpenseNameInput);
+        
+        Button createExpenseButton = new Button("create");
+        createExpenseButton.setPadding(new Insets(20));
+
+        createExpenseButton.setOnAction(e -> {
+            String amount = newExpenseAmountInput.getText();
+            String name = newExpenseNameInput.getText();
+
+            try {
+                Double amountD = Double.parseDouble(amount);
+                if (name.length() < 3) {
+                    expenseMessage.setText("name is too short");
+                    expenseMessage.setTextFill(Color.RED);
+                } else if (amountD < 0) {
+                    expenseMessage.setText("give a positive number");
+                    expenseMessage.setTextFill(Color.RED);
+                } else try {
+                    if (metuseService.createExpense(name, amountD)) {
+                        primaryStage.setScene(mainScene);
+                    } else {
+                        expenseMessage.setText("failed to create expense");
+                        expenseMessage.setTextFill(Color.RED);
+                    }
+                } catch (SQLException ex) {
+                    System.out.println(ex);
+                }
+            } catch (NumberFormatException en) {
+                expenseMessage.setText("amount is not a valid number");
+                expenseMessage.setTextFill(Color.RED);
+            }
+        });
+        newExpensePane.getChildren().addAll(expenseMessage, newExpenseNamePane, newExpenseAmountPane, createExpenseButton);
+        createExpenseScene = new Scene(newExpensePane, 500, 350);
+
+        //Income
+        VBox newIncomePane = new VBox(20);
+        Label incomeMessage = new Label();
+        
+        HBox newIncomeAmountPane = new HBox(20);
+        newIncomeAmountPane.setPadding(new Insets(20));
+        TextField newIncomeAmountInput = new TextField();
+        Label newIncomeAmountLabel = new Label("amount");
+        newIncomeAmountLabel.setPrefWidth(100);
+        newIncomeAmountPane.getChildren().addAll(newIncomeAmountLabel, newIncomeAmountInput);
+        
+        HBox newIncomeNamePane = new HBox(20);
+        newIncomeNamePane.setPadding(new Insets(20));
+        TextField newIncomeNameInput = new TextField();
+        Label newIncomeNameLabel = new Label("name");
+        newIncomeNameLabel.setPrefWidth(100);
+        newIncomeNamePane.getChildren().addAll(newIncomeNameLabel, newIncomeNameInput);
+        
+        Button createIncomeButton = new Button("create");
+        createIncomeButton.setPadding(new Insets(20));
+        
+        createIncomeButton.setOnAction(e -> {
+            String amount = newIncomeAmountInput.getText();
+            String name = newIncomeNameInput.getText();
+
+            try {
+                Double amountD = Double.parseDouble(amount);
+                if (name.length() < 3) {
+                    incomeMessage.setText("name is too short");
+                    incomeMessage.setTextFill(Color.RED);
+                } else if (amountD < 0) {
+                    incomeMessage.setText("give a positive number");
+                    incomeMessage.setTextFill(Color.RED);
+                } else try {
+                    if (metuseService.createIncome(name, amountD)) {
+                        primaryStage.setScene(mainScene);
+                    } else {
+                        incomeMessage.setText("failed to create income");
+                        incomeMessage.setTextFill(Color.RED);
+                    }
+                } catch (SQLException ex) {
+                    System.out.println(ex);
+                }
+            } catch (NumberFormatException en) {
+                incomeMessage.setText("amount is not a valid number");
+                incomeMessage.setTextFill(Color.RED);
+            }
+        });
+        newIncomePane.getChildren().addAll(incomeMessage, newIncomeAmountPane, newIncomeNamePane, createIncomeButton);
+        createIncomeScene = new Scene(newIncomePane, 500, 350);
+
+        //main
+        ScrollPane metuseScollbar = new ScrollPane();
+        BorderPane mainPane = new BorderPane(metuseScollbar);
         mainScene = new Scene(mainPane, 500, 350);
-                
-        HBox menuPane = new HBox(20);    
+
+        HBox menuPane = new HBox(20);
         Region menuSpacer = new Region();
         HBox.setHgrow(menuSpacer, Priority.ALWAYS);
-        Button logoutButton = new Button("logout");      
-        menuPane.getChildren().addAll(menuLabel, menuSpacer, logoutButton);
-        logoutButton.setOnAction(e->{
+        Button logoutButton = new Button("logout");
+        Button addExpenseButton = new Button("add expense");
+        Button addIncomeButton = new Button("add income");
+        menuPane.getChildren().addAll(menuLabel, menuSpacer, addIncomeButton, addExpenseButton, logoutButton);
+        logoutButton.setOnAction(e -> {
             metuseService.logout();
             primaryStage.setScene(loginScene);
-        });        
-        
-        mainPane.setTop(menuPane); 
+        });
+        addExpenseButton.setOnAction(e -> {
+            newExpenseAmountInput.setText("");
+            newExpenseNameInput.setText("");
+            primaryStage.setScene(createExpenseScene);
+        });
+        addIncomeButton.setOnAction(e -> {
+            newIncomeAmountInput.setText("");
+            newIncomeNameInput.setText("");
+            primaryStage.setScene(createIncomeScene);
+        });
+        mainPane.setTop(menuPane);
+
+        //setup primary
+        primaryStage.setTitle("MeTuSe");
+        primaryStage.setScene(loginScene);
+        primaryStage.show();
     }
 
     @Override

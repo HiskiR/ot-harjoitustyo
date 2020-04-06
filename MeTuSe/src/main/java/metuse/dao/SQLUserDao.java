@@ -15,7 +15,9 @@ public class SQLUserDao implements UserDao {
         users = new ArrayList<>();
         ResultSet r = db.getConnection().createStatement().executeQuery("SELECT * FROM Users");
         while (r.next()) {
-            users.add(new User(r.getString("name"), r.getString("username")));
+            User user = new User(r.getString("name"), r.getString("username"));
+            user.setId(r.getInt("id"));
+            users.add(user);
         }
     }
 
@@ -27,6 +29,10 @@ public class SQLUserDao implements UserDao {
             s.setString(1, user.getName());
             s.setString(2, user.getUsername());
             s.executeUpdate();
+            s = c.prepareStatement("SELECT id FROM Users WHERE username = ?");
+            s.setString(1, user.getUsername());
+            ResultSet r = s.executeQuery();
+            if (r.next()) user.setId(r.getInt("id"));
             users.add(user);
         } catch (SQLException e) {
             return false;

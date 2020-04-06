@@ -6,23 +6,14 @@ package metuse.domain;
 
 public class Income {
     
-    private int id;
+    private int userId;
     private String name;
     private double amount;
-    final private User user;
     
-    public Income(String name, double amount, User user) {
+    public Income(String name, double amount, int userId) {
         this.name = name;
         this.amount = amount;
-        this.user = user;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        this.userId = userId;
     }
 
     public String getName() {
@@ -41,8 +32,8 @@ public class Income {
         this.amount = amount;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return this.userId;
     }
     
 }
