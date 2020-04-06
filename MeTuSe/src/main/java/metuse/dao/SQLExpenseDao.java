@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 import metuse.domain.Expense;
 
-public class SQLExpenseDao implements ExpenseDao{
-    
+public class SQLExpenseDao implements ExpenseDao {
+
     final private Database db;
     private List<Expense> expenses;
 
     public SQLExpenseDao(Database db) throws SQLException {
         this.db = db;
     }
-    
+
     @Override
     public boolean create(Expense expense) {
         try {
@@ -26,7 +26,7 @@ public class SQLExpenseDao implements ExpenseDao{
             s.executeUpdate();
         } catch (SQLException e) {
             return false;
-        } 
+        }
         return true;
     }
 }

@@ -33,7 +33,7 @@ public class MetuseUi extends Application {
 
     @Override
     public void init() throws Exception {
-        Database db = new Database();
+        Database db = new Database("jdbc:sqlite:database.db");
         SQLUserDao uDao = new SQLUserDao(db);
         SQLExpenseDao eDao = new SQLExpenseDao(db);
         SQLIncomeDao iDao = new SQLIncomeDao(db);

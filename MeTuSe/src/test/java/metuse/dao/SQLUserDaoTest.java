@@ -15,13 +15,14 @@ public class SQLUserDaoTest {
     
     @Before
     public void setUp() throws SQLException {
-        db = new Database();
+        db = new Database("jdbc:sqlite:test.db");
         dao = new SQLUserDao(db);
         Connection c = db.getConnection();
         PreparedStatement s = c.prepareStatement("INSERT INTO Users(name, username) VALUES (?, ?);");
-        s.setString(1, "nameTest");
-        s.setString(2, "usernameTest");
+        s.setString(1, "name");
+        s.setString(2, "username");
         s.executeUpdate();
+        c.close();
     }
     
     @Test
@@ -32,7 +33,7 @@ public class SQLUserDaoTest {
     
     @Test
     public void createReturnsFalseIfUserNotCreated() throws SQLException {
-        User u = new User("nameTest", "usernameTest");
+        User u = new User("name", "username");
         assertTrue(!dao.create(u));
     }
     
@@ -46,6 +47,7 @@ public class SQLUserDaoTest {
         Connection c = db.getConnection();
         Statement s = c.createStatement();
         s.execute("DROP TABLE Users");
+        c.close();
     }
 
 }
