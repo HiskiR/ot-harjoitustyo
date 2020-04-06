@@ -222,7 +222,7 @@ public class MetuseUi extends Application {
                 incomeMessage.setTextFill(Color.RED);
             }
         });
-        newIncomePane.getChildren().addAll(incomeMessage, newIncomeAmountPane, newIncomeNamePane, createIncomeButton);
+        newIncomePane.getChildren().addAll(incomeMessage, newIncomeNamePane, newIncomeAmountPane, createIncomeButton);
         createIncomeScene = new Scene(newIncomePane, 500, 350);
 
         //main

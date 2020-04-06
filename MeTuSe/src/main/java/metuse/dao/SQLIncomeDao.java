@@ -19,7 +19,7 @@ public class SQLIncomeDao implements IncomeDao {
     public boolean create(Income income) {
         try {
             Connection c = db.getConnection();
-            PreparedStatement s = c.prepareStatement("INSERT INTO Expenses(name, amount, user_id, date) "
+            PreparedStatement s = c.prepareStatement("INSERT INTO Incomes(name, amount, user_id, date) "
                     + "VALUES (?, ?, ?, date('now', 'localtime'));");
             s.setString(1, income.getName());
             s.setDouble(2, income.getAmount());
