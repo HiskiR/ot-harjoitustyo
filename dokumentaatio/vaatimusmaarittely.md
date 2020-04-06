@@ -12,28 +12,23 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli eli normaali kä
 
 ### Ennen kirjautumista
 
-- käyttäjä voi luoda käyttäjätunnuksen
-  - käyttäjätunnuksen tulee olla uniikki ja pituudeltaan vähintään 3 merkkiä
-
-- käyttäjä voi kirjautua
-  - kirjautuminen onnistuu syötettäessä kirjautumislomakkeeseen olemassaoleva käyttäjätunnus
-  - jos käyttäjää ei olemassa, käyttäjä saa tästä ilmoituksen
+- [x] käyttäjä voi luoda käyttäjätunnuksen
+  - [x] käyttäjätunnuksen tulee olla uniikki ja pituudeltaan vähintään 3 merkkiä
+- [x] käyttäjä voi kirjautua
+  - [x] kirjautuminen onnistuu syötettäessä kirjautumislomakkeeseen olemassaoleva käyttäjätunnus
+  - [x] jos käyttäjää ei olemassa, käyttäjä saa tästä ilmoituksen
 
 ### Kirjautumisen jälkeen
 
-- käyttäjä näkee omat menonsa ja tulonsa
-
-- käyttäjä voi luoda uuden menon
-  - menolle annetaan nimi ja rahamäärä
-  - luotu meno näkyy ainoastaan sen luoneelle käyttäjälle
-  
-- käyttäjä voi luoda uuden tulon
-  - tulolle annetaan nimi ja rahamäärä
-  - luotu tulo näkyy ainoastaan sen luoneelle käyttäjälle
-
-- käyttäjä voi muokata tulojen ja menojen tietoja
-
-- käyttäjä voi kirjautua ulos
+- [ ] käyttäjä näkee omat menonsa ja tulonsa
+- [x] käyttäjä voi luoda uuden menon
+  - [x] menolle annetaan nimi ja rahamäärä
+  - [ ] luotu meno näkyy ainoastaan sen luoneelle käyttäjälle  
+- [x] käyttäjä voi luoda uuden tulon
+  - [x] tulolle annetaan nimi ja rahamäärä
+  - [ ] luotu tulo näkyy ainoastaan sen luoneelle käyttäjälle
+- [ ] käyttäjä voi muokata tulojen ja menojen tietoja
+- [x] käyttäjä voi kirjautua ulos
 
 ## Jatkokehitysideoita
 
