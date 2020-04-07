@@ -4,4 +4,5 @@
 | :----:|:-----| :-----|
 | 24.3. |  2   |  määrittelydokumentti|
 | 31.3. |  6   |  kirjautuminen ja rekisteröityminen|
-| yht   |  8   |  | 
+| 6.4.  |  4   |  tulojen ja menojen lisäys|
+| yht   |  12   |  | 
