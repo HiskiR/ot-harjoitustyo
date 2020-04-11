@@ -41,3 +41,13 @@ mvn package
 ```
 
 luo hakemistoon _target_ suoritettavan jar-tiedoston _MeTuSe-1.0-SNAPSHOT.jar_
+
+### Checkstyle
+
+Checkstyle suoritetaan komentoriviltä komennolla
+
+```
+ mvn jxr:jxr checkstyle:checkstyle
+```
+
+Checkstyle-raporttia voi tarksatella avaamalla selaimella tiedosto _target/site/checkstyle.html_
