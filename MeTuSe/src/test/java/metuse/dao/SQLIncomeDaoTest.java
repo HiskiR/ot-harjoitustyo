@@ -3,6 +3,8 @@ package metuse.dao;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import metuse.domain.Income;
 import org.junit.After;
 import org.junit.Before;
@@ -26,6 +28,12 @@ public class SQLIncomeDaoTest {
         assertTrue(dao.create(i));
     }
 
+    @Test
+    public void getUserIncomesReturnsAnEmptyListIfNoIncomes() throws SQLException {
+        List<Income> incomes = new ArrayList<>();
+        assertEquals(incomes, dao.getUserIncomes(1));
+    }
+    
     @After
     public void tearDown() throws SQLException {
         Connection c = db.getConnection();

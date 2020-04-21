@@ -4,6 +4,8 @@ package metuse.dao;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import metuse.domain.Expense;
 import org.junit.After;
 import org.junit.Before;
@@ -25,6 +27,12 @@ public class SQLExpenseDaoTest {
     public void createReturnsTrueIfExpenseCreated() throws SQLException {
         Expense e = new Expense("meno", 10, 1);
         assertTrue(dao.create(e));
+    }
+    
+    @Test
+    public void getUserExpensesReturnsAnEmptyListIfNoExpenses() throws SQLException {
+        List<Expense> expenses = new ArrayList<>();
+        assertEquals(expenses, dao.getUserExpenses(1));
     }
     
     @After

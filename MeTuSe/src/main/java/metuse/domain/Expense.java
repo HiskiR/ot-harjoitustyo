@@ -6,7 +6,7 @@ package metuse.domain;
 
 public class Expense {
     
-    private int userId;
+    final private int userId;
     private String name;
     private double amount;
     

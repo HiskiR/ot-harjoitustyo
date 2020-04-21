@@ -2,6 +2,7 @@ package metuse.domain;
 
 import metuse.dao.UserDao;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import metuse.dao.ExpenseDao;
 import metuse.dao.IncomeDao;
@@ -35,12 +36,18 @@ public class MetuseService {
     }
 
     public List<Expense> getExpenses() throws SQLException {
-        List<Expense> expenses = expenseDao.getUserExpenses(loggedIn.getId());
+        List<Expense> expenses = new ArrayList<>();
+        if (loggedIn != null) {
+            expenses = expenseDao.getUserExpenses(loggedIn.getId());
+        }
         return expenses;
     }
 
     public List<Income> getIncomes() throws SQLException {
-        List<Income> incomes = incomeDao.getUserIncomes(loggedIn.getId());
+        List<Income> incomes = new ArrayList<>();
+        if (loggedIn != null) {
+            incomes = incomeDao.getUserIncomes(loggedIn.getId());
+        }
         return incomes;
     }
 

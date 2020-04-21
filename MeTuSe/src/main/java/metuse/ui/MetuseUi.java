@@ -1,14 +1,20 @@
 package metuse.ui;
 
 import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
@@ -19,6 +25,8 @@ import metuse.dao.SQLUserDao;
 import metuse.dao.Database;
 import metuse.dao.SQLExpenseDao;
 import metuse.dao.SQLIncomeDao;
+import metuse.domain.Expense;
+import metuse.domain.Income;
 import metuse.domain.MetuseService;
 
 public class MetuseUi extends Application {
@@ -29,6 +37,8 @@ public class MetuseUi extends Application {
     private Scene createExpenseScene;
     private Scene createIncomeScene;
     private Label menuLabel = new Label();
+    private VBox expenseNodes;
+    private VBox incomeNodes;
     private MetuseService metuseService;
 
     @Override
@@ -40,8 +50,58 @@ public class MetuseUi extends Application {
         metuseService = new MetuseService(uDao, eDao, iDao);
     }
 
+    public Node createExpenseNode(Expense expense) {
+        HBox box = new HBox(10);
+        Label expName  = new Label(expense.getName());
+        expName.setMinHeight(28);
+        
+        Label expAmount  = new Label(Double.toString(expense.getAmount()));
+        expAmount.setMinHeight(28);
+                
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, Priority.ALWAYS);
+        box.setPadding(new Insets(0,5,0,5));
+        
+        box.getChildren().addAll(expName, spacer, expAmount);
+        return box;
+    }
+    
+    public Node createIncomeNode(Income income) {
+        HBox box = new HBox(10);
+        Label incName  = new Label(income.getName());
+        incName.setMinHeight(28);
+        
+        Label incAmount  = new Label(Double.toString(income.getAmount()));
+        incAmount.setMinHeight(28);
+                
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, Priority.ALWAYS);
+        box.setPadding(new Insets(0,5,0,5));
+        
+        box.getChildren().addAll(incName, spacer, incAmount);
+        return box;
+    }
+    
+    public void expenseList() throws SQLException {
+        expenseNodes.getChildren().clear();     
+
+        List<Expense> expenses = metuseService.getExpenses();
+        for (Expense e : expenses) {
+            expenseNodes.getChildren().add(createExpenseNode(e));
+        }    
+    }
+    
+    public void incomeList() throws SQLException {
+        incomeNodes.getChildren().clear();     
+
+        List<Income> incomes = metuseService.getIncomes();
+        for (Income i : incomes) {
+            incomeNodes.getChildren().add(createIncomeNode(i));
+        }    
+    }
+    
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws SQLException {
 
         //login
         Label loginMessage = new Label();
@@ -59,6 +119,10 @@ public class MetuseUi extends Application {
             String username = usernameInput.getText();
             menuLabel.setText(username + " logged in");
             if (metuseService.login(username)) {
+                try {
+                    expenseList();
+                    incomeList();
+                } catch (SQLException ex) {}
                 loginMessage.setText("");
                 primaryStage.setScene(mainScene);
                 usernameInput.setText("");
@@ -159,6 +223,7 @@ public class MetuseUi extends Application {
                 } else try {
                     if (metuseService.createExpense(name, amountD)) {
                         primaryStage.setScene(mainScene);
+                        expenseList();
                     } else {
                         expenseMessage.setText("failed to create expense");
                         expenseMessage.setTextFill(Color.RED);
@@ -210,6 +275,7 @@ public class MetuseUi extends Application {
                 } else try {
                     if (metuseService.createIncome(name, amountD)) {
                         primaryStage.setScene(mainScene);
+                        incomeList();
                     } else {
                         incomeMessage.setText("failed to create income");
                         incomeMessage.setTextFill(Color.RED);
@@ -225,7 +291,7 @@ public class MetuseUi extends Application {
         newIncomePane.getChildren().addAll(incomeMessage, newIncomeNamePane, newIncomeAmountPane, createIncomeButton);
         createIncomeScene = new Scene(newIncomePane, 500, 350);
 
-        //main
+        //main 
         BorderPane mainPane = new BorderPane();
         mainScene = new Scene(mainPane, 500, 350);
 
@@ -235,7 +301,7 @@ public class MetuseUi extends Application {
         Button logoutButton = new Button("logout");
         Button addExpenseButton = new Button("add expense");
         Button addIncomeButton = new Button("add income");
-        menuPane.getChildren().addAll(menuLabel, menuSpacer, addIncomeButton, addExpenseButton, logoutButton);
+        menuPane.getChildren().addAll(menuLabel, menuSpacer, addExpenseButton, addIncomeButton, logoutButton);
         logoutButton.setOnAction(e -> {
             metuseService.logout();
             primaryStage.setScene(loginScene);
@@ -250,6 +316,32 @@ public class MetuseUi extends Application {
             newIncomeNameInput.setText("");
             primaryStage.setScene(createIncomeScene);
         });
+        
+        GridPane listPane = new GridPane();
+        ColumnConstraints col1 = new ColumnConstraints();
+        col1.setPercentWidth(50);
+        ColumnConstraints col2 = new ColumnConstraints();
+        col2.setPercentWidth(50);
+        listPane.getColumnConstraints().addAll(col1, col2);
+        
+        ScrollPane expenses = new ScrollPane();
+        expenses.setFitToWidth(true);
+        
+        ScrollPane incomes = new ScrollPane();
+        incomes.setFitToWidth(true);
+        
+        expenseNodes = new VBox(8);
+        expenseList();
+        incomeNodes = new VBox(8);
+        incomeList();
+        
+        listPane.addRow(0, new Label(""), new Label(""));
+        listPane.addRow(1, new Label(" expenses "), new Label(" incomes "));
+        listPane.addRow(2, expenses, incomes);
+        
+        expenses.setContent(expenseNodes);
+        incomes.setContent(incomeNodes);
+        mainPane.setCenter(listPane);
         mainPane.setTop(menuPane);
 
         //setup primary
