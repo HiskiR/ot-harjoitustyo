@@ -20,13 +20,13 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli eli normaali kä
 
 ### Kirjautumisen jälkeen
 
-- [ ] käyttäjä näkee omat menonsa ja tulonsa
+- [x] käyttäjä näkee omat menonsa ja tulonsa
 - [x] käyttäjä voi luoda uuden menon
   - menolle annetaan nimi ja rahamäärä
-  - luotu meno näkyy ainoastaan sen luoneelle käyttäjälle (ei näy vielä kenellekään)
+  - luotu meno näkyy ainoastaan sen luoneelle käyttäjälle
 - [x] käyttäjä voi luoda uuden tulon
   - tulolle annetaan nimi ja rahamäärä
-  - luotu tulo näkyy ainoastaan sen luoneelle käyttäjälle (ei näy vielä kenellekään)
+  - luotu tulo näkyy ainoastaan sen luoneelle käyttäjälle
 - [ ] käyttäjä voi muokata tulojen ja menojen tietoja
 - [x] käyttäjä voi kirjautua ulos
 
