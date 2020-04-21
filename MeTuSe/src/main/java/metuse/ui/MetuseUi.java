@@ -226,8 +226,7 @@ public class MetuseUi extends Application {
         createIncomeScene = new Scene(newIncomePane, 500, 350);
 
         //main
-        ScrollPane metuseScollbar = new ScrollPane();
-        BorderPane mainPane = new BorderPane(metuseScollbar);
+        BorderPane mainPane = new BorderPane();
         mainScene = new Scene(mainPane, 500, 350);
 
         HBox menuPane = new HBox(20);
@@ -261,7 +260,7 @@ public class MetuseUi extends Application {
 
     @Override
     public void stop() {
-        System.out.println("Bye");
+        System.out.println("closing");
     }
 
     public static void main(String[] args) {

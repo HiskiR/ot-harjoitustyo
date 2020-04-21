@@ -29,4 +29,20 @@ public class SQLExpenseDao implements ExpenseDao {
         }
         return true;
     }
+
+    @Override
+    public List<Expense> getUserExpenses(int id) throws SQLException {
+        expenses = new ArrayList<>();
+        Connection c = db.getConnection();
+        PreparedStatement s = c.prepareStatement("SELECT * FROM Expenses WHERE user_id = ?");
+        s.setInt(1, id);
+        ResultSet r = s.executeQuery();
+        
+        while(r.next()) {
+            Expense e = new Expense(r.getString("name"), r.getDouble("amount"), id);
+            expenses.add(e);
+        }
+        
+        return expenses;
+    }
 }
