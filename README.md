@@ -10,6 +10,8 @@ Sovelluksen avulla käyttäjät voivat seurata tulojaan ja menojaan.
 
 [Työaikakirjanpito](https://github.com/HiskiR/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
+## Releaset
+[Viikko 5](https://github.com/HiskiR/ot-harjoitustyo/releases/tag/viikko5)
 ## Komentorivitoiminnot
 
 ### Testaus
