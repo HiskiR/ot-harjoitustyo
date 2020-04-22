@@ -6,4 +6,5 @@
 | 31.3. |  6   |  kirjautuminen ja rekisteröityminen|
 | 6.4.  |  4   |  tulojen ja menojen lisäys|
 | 7.4.  |  1   |  alustava pakkauskaavio|
-| yht   |  13   |  | 
+| 22.4  |  8   |  tulojen ja menojen näyttö|
+| yht   |  21  |  | 
