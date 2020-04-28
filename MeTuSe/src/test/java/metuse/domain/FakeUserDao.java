@@ -28,6 +28,11 @@ public class FakeUserDao implements UserDao {
     
     @Override
     public boolean create(User user) {
+        for (User u : users) {
+            if (u.getUsername().equals(user.getName())) {
+                return false;
+            }
+        }
         user.setId(id);
         id++;
         users.add(user);

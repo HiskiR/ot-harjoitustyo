@@ -2,8 +2,6 @@ package metuse.ui;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -107,6 +105,7 @@ public class MetuseUi extends Application {
         
         //login
         Label loginMessage = new Label();
+        Label registerMessage = new Label();
         VBox loginPane = new VBox(20);
         HBox inputPane = new HBox(20);
         loginPane.setPadding(new Insets(20));
@@ -139,6 +138,7 @@ public class MetuseUi extends Application {
         createButton.setOnAction(e -> {
             usernameInput.setText("");
             loginMessage.setText("");
+            registerMessage.setText("");
             primaryStage.setScene(registerScene);
         });
 
@@ -158,7 +158,6 @@ public class MetuseUi extends Application {
             primaryStage.setScene(loginScene);
         });
         
-        Label registerMessage = new Label();
         VBox newUserPane = new VBox(20);
 
         HBox newUsernamePane = new HBox(20);

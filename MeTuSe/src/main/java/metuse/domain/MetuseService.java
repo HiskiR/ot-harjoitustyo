@@ -79,4 +79,8 @@ public class MetuseService {
         loggedIn = user;
         return true;
     }
+    
+    public User getLoggedIn() {
+        return this.loggedIn;
+    }
 }
