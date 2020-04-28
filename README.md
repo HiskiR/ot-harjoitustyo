@@ -8,6 +8,8 @@ Sovelluksen avulla käyttäjät voivat seurata tulojaan ja menojaan.
 
 [Arkkitehtuurikuvaus](https://github.com/HiskiR/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+[Kayttöohje](https://github.com/HiskiR/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
+
 [Työaikakirjanpito](https://github.com/HiskiR/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
 ## Releaset
