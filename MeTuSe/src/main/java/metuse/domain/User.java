@@ -1,7 +1,7 @@
 package metuse.domain;
 
 /**
- * Sovelluksen käyttäjää kuvaava luokka 
+ * Käyttäjää kuvaava luokka 
  */
 
 public class User {
@@ -9,6 +9,11 @@ public class User {
     final private String username;
     private int id;
 
+     /**
+     *
+     * @param name käyttäjän nimi
+     * @param username käyttäjän käyttäjänimi
+     */
     public User(String name, String username) {
         this.name = name;
         this.username = username;

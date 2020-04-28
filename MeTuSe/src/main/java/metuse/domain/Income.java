@@ -1,7 +1,7 @@
 package metuse.domain;
 
 /**
- * Yksittäistä tuloa kuvaava luokka 
+ * Tuloa kuvaava luokka 
  */
 
 public class Income {
@@ -10,6 +10,12 @@ public class Income {
     private String name;
     private double amount;
     
+     /**
+     *
+     * @param name tulon nimi
+     * @param amount tulon määrä desimaalilukuna
+     * @param userId tulon käyttäjän id
+     */
     public Income(String name, double amount, int userId) {
         this.name = name;
         this.amount = amount;

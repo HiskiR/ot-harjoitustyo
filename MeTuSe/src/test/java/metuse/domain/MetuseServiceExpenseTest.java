@@ -35,36 +35,6 @@ public class MetuseServiceExpenseTest {
     }    
     
     @Test
-    public void expenseListContainsUsersExpensesAfterLogin() throws SQLException {
-        List<Expense> expenses = service.getExpenses(); 
-        assertEquals(1, expenses.size());
-        Expense e = expenses.get(0);
-        assertEquals("test", e.getName());
-        assertEquals("2.5", String.valueOf(e.getAmount()));
-        assertEquals(1, e.getUserId());
-    }    
-    
-    @Test
-    public void expenseListContainsAddedExpense() throws SQLException {      
-        expenseDao.create(new Expense("exp", 4.7, 1));
-        List<Expense> expenses = service.getExpenses();               
-        assertEquals(2, expenses.size());
-        Expense e = expenses.get(1);
-        assertEquals("exp", e.getName());
-        assertEquals("4.7", String.valueOf(e.getAmount()));
-        assertEquals(1, e.getUserId());
-    } 
-    
-    @Test
-    public void expenseListContainsOnlyLoggedInUsersExpenses() throws SQLException {
-        userDao.create(new User("test2", "test2"));
-        service.logout();
-        service.login("test2");
-        List<Expense> expenses = service.getExpenses();               
-        assertEquals(0, expenses.size());
-    } 
-    
-    @Test
     public void getExpensesSumReturnsZeroIfNotLoggedIn() throws SQLException {
         service.logout();
         double sum = service.getExpensesSum();

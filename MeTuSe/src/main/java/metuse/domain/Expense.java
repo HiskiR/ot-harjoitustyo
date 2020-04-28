@@ -1,7 +1,7 @@
 package metuse.domain;
 
 /**
- * Yksittäistä menoa kuvaava luokka 
+ * Menoa kuvaava luokka 
  */
 
 public class Expense {
@@ -10,6 +10,12 @@ public class Expense {
     private String name;
     private double amount;
     
+     /**
+     *
+     * @param name menon nimi
+     * @param amount menon määrä desimaalilukuna
+     * @param userId menon käyttäjän id
+     */
     public Expense(String name, double amount, int userId) {
         this.name = name;
         this.amount = amount;
