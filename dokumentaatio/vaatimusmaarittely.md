@@ -27,13 +27,15 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli eli normaali kä
 - [x] käyttäjä voi luoda uuden tulon
   - tulolle annetaan nimi ja rahamäärä
   - luotu tulo näkyy ainoastaan sen luoneelle käyttäjälle
-- [ ] käyttäjä voi muokata tulojen ja menojen tietoja
+- [ ] käyttäjä näkee omien tulojen ja menojen summat
 - [x] käyttäjä voi kirjautua ulos
 
 ## Jatkokehitysideoita
 
 Perustoiminnallisuuksien jälkeen ohjelmaan lisätään mm. seuraavia toiminnallisuuksia
 
+- käyttäjä voi muokata tulojen ja menojen tietoja
+- käyttäjä voi poistaa tuloja ja menoja
 - menojen ja tulojen tarkastelu haluamallaan aikavälillä
 - graafinen esitys tuloille ja menoille
 - kuukausikohtainen tieto onko kuukaudessa ollut rahamäärällisesti enemmän tuloja vai menoja
