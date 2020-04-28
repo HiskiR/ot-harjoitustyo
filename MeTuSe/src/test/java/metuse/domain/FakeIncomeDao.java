@@ -1,34 +1,37 @@
-
 package metuse.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import metuse.dao.Database;
 import metuse.dao.IncomeDao;
 
-
-public class FakeIncomeDao implements IncomeDao{
+public class FakeIncomeDao implements IncomeDao {
     
     List<Income> incomes;
     
     public FakeIncomeDao() {
         incomes = new ArrayList<>();
+        final Database db;
     }
     
     @Override
     public boolean create(Income income) {
-        incomes.add(income);
+        try {
+            incomes.add(income);
+        } catch (Exception e) {
+            return false;
+        }
         return true;
     }
     
     @Override
     public List<Income> getUserIncomes(int id) {
-        List<Income> userIncomes = new ArrayList<>();
         for (Income i : incomes) {
             if (i.getUserId() == id) {
-                userIncomes.add(i);
+                incomes.add(i);
             }
         }
-        return userIncomes;
+        return incomes;
     }
     
     @Override

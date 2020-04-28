@@ -11,6 +11,7 @@ public class SQLExpenseDao implements ExpenseDao {
     private List<Expense> expenses;
 
     public SQLExpenseDao(Database db) throws SQLException {
+        expenses = new ArrayList<>();
         this.db = db;
     }
 

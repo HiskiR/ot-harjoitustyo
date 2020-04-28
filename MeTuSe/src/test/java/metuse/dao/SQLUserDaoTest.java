@@ -2,6 +2,9 @@ package metuse.dao;
 
 import java.sql.*;
 import java.sql.SQLException;
+import metuse.dao.Database;
+import metuse.dao.SQLUserDao;
+import metuse.dao.UserDao;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

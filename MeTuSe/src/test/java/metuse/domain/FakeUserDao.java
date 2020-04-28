@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import metuse.dao.UserDao;
 
-
 public class FakeUserDao implements UserDao {
     List<User> users = new ArrayList<>();
     int id;
 
     public FakeUserDao() {
-        User u = new User("test", "Test");
+        User u = new User("test", "test");
         u.setId(1);
         users.add(u);
         id = 2;

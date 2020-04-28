@@ -26,15 +26,16 @@ public class MetuseServiceUserTest {
     
      @Test
     public void cannotLoginIfUserDoesNotExist() {
-        assertFalse(service.login("notUser"));   
+        boolean result = service.login("notUser");
+        assertFalse(result);   
         assertEquals(null, service.getLoggedIn());
     }    
     
     @Test
     public void userCanLogIn() {
         assertTrue(service.login("test"));       
-        User loggedIn = service.getLoggedIn();
-        assertEquals(1, loggedIn.getId() );
+        String loggedInUsername = service.getLoggedIn().getUsername();
+        assertEquals("test", loggedInUsername);
     }
     
     @Test
@@ -46,6 +47,7 @@ public class MetuseServiceUserTest {
     
     @Test
     public void createUserReturnsFalseIfUsernameNotUnique() throws Exception {
-        assertFalse(service.createUser("test", "name"));
+        boolean result = service.createUser("test", "test");
+        assertFalse(result);
     }
 }

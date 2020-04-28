@@ -1,6 +1,6 @@
-
 package metuse.domain;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import metuse.dao.ExpenseDao;
@@ -15,22 +15,26 @@ public class FakeExpenseDao implements ExpenseDao {
     
     @Override
     public boolean create(Expense expense) {
-        expenses.add(expense);
+        try {
+            expenses.add(expense);
+        } catch (Exception e) {
+            return false;
+        }
         return true;
     }
     
     @Override
-    public List<Expense> getUserExpenses(int id) {
-        List<Expense> userExpenses = new ArrayList<>();
+    public List<Expense> getUserExpenses(int id) throws SQLException {
         for (Expense e : expenses) {
             if (e.getUserId() == id) {
-                userExpenses.add(e);
+                expenses.add(e);
             }
         }
-        return userExpenses;
+        return expenses;
     }
     
-    public double getUserExpensesSum(int id) {
+    @Override
+    public double getUserExpensesSum(int id) throws SQLException {
         double sum = 0;
         for (Expense e : expenses) {
             if (e.getUserId() == id) {
