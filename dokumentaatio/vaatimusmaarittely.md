@@ -27,7 +27,7 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli eli normaali kä
 - [x] käyttäjä voi luoda uuden tulon
   - tulolle annetaan nimi ja rahamäärä
   - luotu tulo näkyy ainoastaan sen luoneelle käyttäjälle
-- [ ] käyttäjä näkee omien tulojen ja menojen summat
+- [x] käyttäjä näkee omien tulojen ja menojen summat
 - [x] käyttäjä voi kirjautua ulos
 
 ## Jatkokehitysideoita
