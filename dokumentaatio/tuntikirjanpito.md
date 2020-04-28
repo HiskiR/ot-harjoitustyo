@@ -8,4 +8,5 @@
 | 7.4.  |  1   |  alustava pakkauskaavio |
 | 22.4  |  8   |  tulojen ja menojen näyttö |
 | 28.4  |  2   |  tulojen ja menojen summat, ui otsikot ja takaisin-napit |
-| yht   |  23  |  | 
+| 28.4  |  8   |  testaus ja javadoc |
+| yht   |  31  |  | 
