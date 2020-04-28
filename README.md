@@ -12,6 +12,8 @@ Sovelluksen avulla käyttäjät voivat seurata tulojaan ja menojaan.
 
 ## Releaset
 [Viikko 5](https://github.com/HiskiR/ot-harjoitustyo/releases/tag/viikko5)
+
+[Viikko 6](https://github.com/HiskiR/ot-harjoitustyo/releases/tag/Viikko6)
 ## Komentorivitoiminnot
 
 ### Testaus
