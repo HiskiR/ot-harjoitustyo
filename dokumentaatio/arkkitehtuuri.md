@@ -23,7 +23,7 @@ Käyttöliittymästä vastaava koodi sijaitsee luokassa metuse.ui.MetuseUi.
 
 ### Sovelluslogiikka
 
-Ohjelman osien suhdettu kuvaa seuraava pakkauskaavio:
+Ohjelman osien suhdetta kuvaa seuraava pakkauskaavio:
 
 <img src="https://github.com/HiskiR/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/luokka:pakkauskaavio.png">
 
