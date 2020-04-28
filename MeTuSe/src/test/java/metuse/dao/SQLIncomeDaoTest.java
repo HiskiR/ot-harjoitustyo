@@ -27,7 +27,7 @@ public class SQLIncomeDaoTest {
         Income i = new Income("tulo", 10, 1);
         assertTrue(dao.create(i));
     }
-
+    
     @Test
     public void getUserIncomesReturnsAnEmptyListIfNoIncomes() throws SQLException {
         List<Income> incomes = new ArrayList<>();

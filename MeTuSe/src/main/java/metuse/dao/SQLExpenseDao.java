@@ -7,7 +7,7 @@ import metuse.domain.Expense;
 
 public class SQLExpenseDao implements ExpenseDao {
 
-    final private Database db;
+    private Database db;
     private List<Expense> expenses;
 
     public SQLExpenseDao(Database db) throws SQLException {
@@ -25,6 +25,7 @@ public class SQLExpenseDao implements ExpenseDao {
             s.setInt(3, expense.getUserId());
             s.executeUpdate();
             c.close();
+            expenses.add(expense);
         } catch (SQLException e) {
             return false;
         }
