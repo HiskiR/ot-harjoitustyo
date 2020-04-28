@@ -102,7 +102,7 @@ public class MetuseUi extends Application {
     
     @Override
     public void start(Stage primaryStage) throws SQLException {
-
+        
         //login
         Label loginMessage = new Label();
         VBox loginPane = new VBox(20);
@@ -143,6 +143,16 @@ public class MetuseUi extends Application {
         loginScene = new Scene(loginPane, 500, 350);
 
         //register
+        
+        HBox registerButtonPane = new HBox(20);
+        registerButtonPane.setPadding(new Insets(20));
+        Button registerBackButton = new Button("Back");
+        
+        
+        registerBackButton.setOnAction(e -> {
+            primaryStage.setScene(loginScene);
+        });
+        
         Label registerMessage = new Label();
         VBox newUserPane = new VBox(20);
 
@@ -161,7 +171,8 @@ public class MetuseUi extends Application {
         newNamePane.getChildren().addAll(newNameLabel, newNameInput);
 
         Button createNewUserButton = new Button("create");
-        createNewUserButton.setPadding(new Insets(15));
+        createNewUserButton.setPrefWidth(100);
+        registerButtonPane.getChildren().addAll(createNewUserButton, registerBackButton);
 
         createNewUserButton.setOnAction(e -> {
             String username = newUsernameInput.getText();
@@ -184,12 +195,17 @@ public class MetuseUi extends Application {
                 System.out.println(ex);
             }
         });
-        newUserPane.getChildren().addAll(registerMessage, newUsernamePane, newNamePane, createNewUserButton);
+        newUserPane.getChildren().addAll(registerMessage, newUsernamePane, newNamePane, registerButtonPane);
         registerScene = new Scene(newUserPane, 500, 350);
 
         //expense
         Label expenseMessage = new Label();
         VBox newExpensePane = new VBox(20);
+        
+        HBox expenseTitlePane = new HBox(5);
+        expenseTitlePane.setPadding(new Insets(0, 0, 0, 200));
+        Label expenseTitle = new Label("Expense");
+        expenseTitlePane.getChildren().add(expenseTitle);
         
         HBox newExpenseAmountPane = new HBox(20);
         newExpenseAmountPane.setPadding(new Insets(20));
@@ -205,9 +221,19 @@ public class MetuseUi extends Application {
         newExpenseNameLabel.setPrefWidth(100);
         newExpenseNamePane.getChildren().addAll(newExpenseNameLabel, newExpenseNameInput);
         
+        HBox expenseButtonPane = new HBox(20);
+        expenseButtonPane.setPadding(new Insets(20));
+        Button expenseBackButton = new Button("Back");
+        
+        
+        expenseBackButton.setOnAction(e -> {
+            primaryStage.setScene(mainScene);
+        });
+          
         Button createExpenseButton = new Button("create");
-        createExpenseButton.setPadding(new Insets(20));
-
+        createExpenseButton.setPrefWidth(100);
+        expenseButtonPane.getChildren().addAll(createExpenseButton, expenseBackButton);
+        
         createExpenseButton.setOnAction(e -> {
             String amount = newExpenseAmountInput.getText();
             String name = newExpenseNameInput.getText();
@@ -236,12 +262,18 @@ public class MetuseUi extends Application {
                 expenseMessage.setTextFill(Color.RED);
             }
         });
-        newExpensePane.getChildren().addAll(expenseMessage, newExpenseNamePane, newExpenseAmountPane, createExpenseButton);
+        newExpensePane.getChildren().addAll(expenseMessage, expenseTitlePane, newExpenseNamePane, newExpenseAmountPane, expenseButtonPane);
         createExpenseScene = new Scene(newExpensePane, 500, 350);
 
         //Income
         VBox newIncomePane = new VBox(20);
         Label incomeMessage = new Label();
+        
+        HBox incomeTitlePane = new HBox(5);
+        incomeTitlePane.setPadding(new Insets(0, 0, 0, 200));
+        Label incomeTitle = new Label("Income");
+        incomeTitlePane.getChildren().add(incomeTitle);
+        
         
         HBox newIncomeAmountPane = new HBox(20);
         newIncomeAmountPane.setPadding(new Insets(20));
@@ -257,8 +289,17 @@ public class MetuseUi extends Application {
         newIncomeNameLabel.setPrefWidth(100);
         newIncomeNamePane.getChildren().addAll(newIncomeNameLabel, newIncomeNameInput);
         
+        HBox incomeButtonPane = new HBox(20);
+        incomeButtonPane.setPadding(new Insets(20));
+        Button incomeBackButton = new Button("Back");
+         
+        incomeBackButton.setOnAction(e -> {
+            primaryStage.setScene(mainScene);
+        });
+             
         Button createIncomeButton = new Button("create");
-        createIncomeButton.setPadding(new Insets(20));
+        createIncomeButton.setPrefWidth(100);
+        incomeButtonPane.getChildren().addAll(createIncomeButton, incomeBackButton);
         
         createIncomeButton.setOnAction(e -> {
             String amount = newIncomeAmountInput.getText();
@@ -288,7 +329,7 @@ public class MetuseUi extends Application {
                 incomeMessage.setTextFill(Color.RED);
             }
         });
-        newIncomePane.getChildren().addAll(incomeMessage, newIncomeNamePane, newIncomeAmountPane, createIncomeButton);
+        newIncomePane.getChildren().addAll(incomeMessage,incomeTitlePane, newIncomeNamePane, newIncomeAmountPane, incomeButtonPane);
         createIncomeScene = new Scene(newIncomePane, 500, 350);
 
         //main 
@@ -309,11 +350,13 @@ public class MetuseUi extends Application {
         addExpenseButton.setOnAction(e -> {
             newExpenseAmountInput.setText("");
             newExpenseNameInput.setText("");
+            expenseMessage.setText("");
             primaryStage.setScene(createExpenseScene);
         });
         addIncomeButton.setOnAction(e -> {
             newIncomeAmountInput.setText("");
             newIncomeNameInput.setText("");
+            incomeMessage.setText("");
             primaryStage.setScene(createIncomeScene);
         });
         
