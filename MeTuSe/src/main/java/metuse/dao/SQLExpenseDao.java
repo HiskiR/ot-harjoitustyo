@@ -24,6 +24,7 @@ public class SQLExpenseDao implements ExpenseDao {
             s.setDouble(2, expense.getAmount());
             s.setInt(3, expense.getUserId());
             s.executeUpdate();
+            c.close();
         } catch (SQLException e) {
             return false;
         }
@@ -42,7 +43,21 @@ public class SQLExpenseDao implements ExpenseDao {
             Expense e = new Expense(r.getString("name"), r.getDouble("amount"), id);
             expenses.add(e);
         }
-
+        c.close();
         return expenses;
+    }
+    
+    @Override
+    public double getUserExpensesSum(int id) throws SQLException {
+        double sum = 0;
+        Connection c = db.getConnection();
+        PreparedStatement s = c.prepareStatement("SELECT SUM(Expenses.amount) AS sum FROM Expenses WHERE user_id = ?");
+        s.setInt(1, id);
+        ResultSet r = s.executeQuery();
+        if (r.next()) {
+            sum = r.getDouble("sum");
+        }
+        c.close();
+        return sum;
     }
 }

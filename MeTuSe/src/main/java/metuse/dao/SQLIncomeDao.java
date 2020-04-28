@@ -48,4 +48,18 @@ public class SQLIncomeDao implements IncomeDao {
 
         return incomes;
     }
+    
+    @Override
+    public double getUserIncomesSum(int id) throws SQLException {
+        double sum = 0;
+        Connection c = db.getConnection();
+        PreparedStatement s = c.prepareStatement("SELECT SUM(Incomes.amount) AS sum FROM Incomes WHERE user_id = ?");
+        s.setInt(1, id);
+        ResultSet r = s.executeQuery();
+        if (r.next()) {
+            sum = r.getDouble("sum");
+        }
+        c.close();
+        return sum;
+    }
 }

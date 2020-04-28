@@ -42,6 +42,14 @@ public class MetuseService {
         }
         return expenses;
     }
+    
+    public double getExpensesSum() throws SQLException {
+        double sum = 0;
+        if (loggedIn != null) {
+            sum = expenseDao.getUserExpensesSum(loggedIn.getId());
+        }
+        return sum;
+    }
 
     public List<Income> getIncomes() throws SQLException {
         List<Income> incomes = new ArrayList<>();
@@ -49,6 +57,14 @@ public class MetuseService {
             incomes = incomeDao.getUserIncomes(loggedIn.getId());
         }
         return incomes;
+    }
+    
+    public double getIncomesSum() throws SQLException {
+        double sum = 0;
+        if (loggedIn != null) {
+            sum = incomeDao.getUserIncomesSum(loggedIn.getId());
+        }
+        return sum;
     }
 
     public void logout() {

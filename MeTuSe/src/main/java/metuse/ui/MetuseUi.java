@@ -39,6 +39,8 @@ public class MetuseUi extends Application {
     private Label menuLabel = new Label();
     private VBox expenseNodes;
     private VBox incomeNodes;
+    private Label expensesSum = new Label();
+    private Label incomesSum = new Label();
     private MetuseService metuseService;
 
     @Override
@@ -122,6 +124,8 @@ public class MetuseUi extends Application {
                 try {
                     expenseList();
                     incomeList();
+                    expensesSum.setText(Double.toString(metuseService.getExpensesSum()));
+                    incomesSum.setText(Double.toString(metuseService.getIncomesSum()));
                 } catch (SQLException ex) {}
                 loginMessage.setText("");
                 primaryStage.setScene(mainScene);
@@ -134,6 +138,7 @@ public class MetuseUi extends Application {
 
         createButton.setOnAction(e -> {
             usernameInput.setText("");
+            loginMessage.setText("");
             primaryStage.setScene(registerScene);
         });
 
@@ -249,6 +254,7 @@ public class MetuseUi extends Application {
                 } else try {
                     if (metuseService.createExpense(name, amountD)) {
                         primaryStage.setScene(mainScene);
+                        expensesSum.setText(Double.toString(metuseService.getExpensesSum()));
                         expenseList();
                     } else {
                         expenseMessage.setText("failed to create expense");
@@ -316,6 +322,7 @@ public class MetuseUi extends Application {
                 } else try {
                     if (metuseService.createIncome(name, amountD)) {
                         primaryStage.setScene(mainScene);
+                        incomesSum.setText(Double.toString(metuseService.getIncomesSum()));
                         incomeList();
                     } else {
                         incomeMessage.setText("failed to create income");
@@ -378,9 +385,28 @@ public class MetuseUi extends Application {
         incomeNodes = new VBox(8);
         incomeList();
         
+        HBox expSumBox = new HBox(10);
+        expensesSum.setMinHeight(28);   
+        Label expSumLabel  = new Label("sum");
+        expSumLabel.setMinHeight(28);             
+        Region expSpacer = new Region();
+        HBox.setHgrow(expSpacer, Priority.ALWAYS);
+        expSumBox.setPadding(new Insets(0,5,0,5));   
+        expSumBox.getChildren().addAll(expSumLabel, expSpacer, expensesSum);
+        
+        HBox incSumBox = new HBox(10);
+        incomesSum.setMinHeight(28);
+        Label incSumLabel = new Label("sum");
+        Region incSpacer = new Region();
+        HBox.setHgrow(incSpacer, Priority.ALWAYS);
+        incSumLabel.setMinHeight(28);
+        incSumBox.setPadding(new Insets(0,5,0,5));     
+        incSumBox.getChildren().addAll(incSumLabel, incSpacer, incomesSum);
+        
         listPane.addRow(0, new Label(""), new Label(""));
         listPane.addRow(1, new Label(" expenses "), new Label(" incomes "));
         listPane.addRow(2, expenses, incomes);
+        listPane.addRow(3, expSumBox, incSumBox);
         
         expenses.setContent(expenseNodes);
         incomes.setContent(incomeNodes);
