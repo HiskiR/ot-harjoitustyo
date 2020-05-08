@@ -9,7 +9,11 @@ public class SQLUserDao implements UserDao {
 
     final private Database db;
     private List<User> users;
-
+    
+    /**
+     * @param db tietokanta, johon käyttäjät tallennetaan
+     * @throws java.sql.SQLException virhe tietokannan kanssa
+     */
     public SQLUserDao(Database db) throws SQLException {
         this.db = db;
         users = new ArrayList<>();
@@ -38,7 +42,11 @@ public class SQLUserDao implements UserDao {
         }
         return true;
     }
-
+    /**
+     * Asettaa käyttäjä-oliolle sille tietokannasta löytyvän id:n
+     * @param user käyttäjä
+     * @throws java.sql.SQLException virhe tietokannan kanssa
+     */
     public void setId(User user) throws SQLException {
         Connection c = db.getConnection();
         PreparedStatement s = c.prepareStatement("SELECT id FROM Users WHERE username = ?");

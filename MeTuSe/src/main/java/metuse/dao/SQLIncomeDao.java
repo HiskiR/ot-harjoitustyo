@@ -12,7 +12,11 @@ public class SQLIncomeDao implements IncomeDao {
 
     final private Database db;
     private List<Income> incomes;
-
+    
+    /**
+     * @param db tietokanta, johon tulot tallennetaan
+     * @throws java.sql.SQLException virhe tietokannan kanssa
+     */
     public SQLIncomeDao(Database db) throws SQLException {
         incomes = new ArrayList<>();
         this.db = db;

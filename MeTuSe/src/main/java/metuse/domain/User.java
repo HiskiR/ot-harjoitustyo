@@ -10,7 +10,6 @@ public class User {
     private int id;
 
      /**
-     *
      * @param name käyttäjän nimi
      * @param username käyttäjän käyttäjänimi
      */

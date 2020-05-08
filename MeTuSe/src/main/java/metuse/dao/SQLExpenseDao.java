@@ -9,7 +9,11 @@ public class SQLExpenseDao implements ExpenseDao {
 
     private Database db;
     private List<Expense> expenses;
-
+    
+    /**
+     * @param db tietokanta, johon menot tallennetaan
+     * @throws java.sql.SQLException virhe tietokannan kanssa
+     */
     public SQLExpenseDao(Database db) throws SQLException {
         expenses = new ArrayList<>();
         this.db = db;
