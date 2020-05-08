@@ -32,10 +32,14 @@ public class FakeUserDao implements UserDao {
                 return false;
             }
         }
-        user.setId(id);
-        id++;
-        users.add(user);
+        setId(user);
         return true;
-    } 
-
+    }
+    
+    @Override
+     public void setId(User user) {
+         user.setId(id);
+         id++;
+         users.add(user);
+     }
 }

@@ -26,12 +26,13 @@ public class FakeIncomeDao implements IncomeDao {
     
     @Override
     public List<Income> getUserIncomes(int id) {
+        List<Income> userIncomes = new ArrayList<>();
         for (Income i : incomes) {
             if (i.getUserId() == id) {
-                incomes.add(i);
+                userIncomes.add(i);
             }
         }
-        return incomes;
+        return userIncomes;
     }
     
     @Override

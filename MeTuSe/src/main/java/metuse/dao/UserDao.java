@@ -22,4 +22,11 @@ public interface UserDao {
      */
     User findByUsername(String username);
     
+    /**
+     * Asettaa käyttäjä-oliolle sille tietokannasta löytyvän id:n
+     * @param user käyttäjä
+     * @throws java.sql.SQLException virhe tietokannan kanssa
+     */
+    void setId(User user) throws SQLException;
+    
 }

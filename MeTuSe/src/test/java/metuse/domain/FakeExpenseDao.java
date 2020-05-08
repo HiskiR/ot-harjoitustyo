@@ -25,12 +25,13 @@ public class FakeExpenseDao implements ExpenseDao {
     
     @Override
     public List<Expense> getUserExpenses(int id) throws SQLException {
+        List<Expense> userExpenses = new ArrayList<>();
         for (Expense e : expenses) {
             if (e.getUserId() == id) {
-                expenses.add(e);
+                userExpenses.add(e);
             }
         }
-        return expenses;
+        return userExpenses;
     }
     
     @Override

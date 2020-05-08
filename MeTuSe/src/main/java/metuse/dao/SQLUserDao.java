@@ -47,6 +47,7 @@ public class SQLUserDao implements UserDao {
      * @param user käyttäjä
      * @throws java.sql.SQLException virhe tietokannan kanssa
      */
+    @Override
     public void setId(User user) throws SQLException {
         Connection c = db.getConnection();
         PreparedStatement s = c.prepareStatement("SELECT id FROM Users WHERE username = ?");
