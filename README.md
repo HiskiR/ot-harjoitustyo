@@ -10,6 +10,8 @@ Sovelluksen avulla käyttäjät voivat seurata tulojaan ja menojaan.
 
 [Kayttöohje](https://github.com/HiskiR/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
+[Testausdokumentti](https://github.com/HiskiR/ot-harjoitustyo/blob/master/dokumentaatio/testaus.md)
+
 [Työaikakirjanpito](https://github.com/HiskiR/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
 ## Releaset
@@ -47,6 +49,15 @@ mvn package
 ```
 
 luo hakemistoon _target_ suoritettavan jar-tiedoston _MeTuSe-1.0-SNAPSHOT.jar_
+
+### JavaDoc
+
+JavaDoc saadaan generoitua komennolla
+
+```
+mvn javadoc:javadoc
+```
+jonka jälkeen sitä voi tarkastella avaamalla tiedoston _target/site/apidocs/index.html_
 
 ### Checkstyle
 
