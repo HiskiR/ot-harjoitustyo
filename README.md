@@ -18,6 +18,8 @@ Sovelluksen avulla käyttäjät voivat seurata tulojaan ja menojaan.
 [Viikko 5](https://github.com/HiskiR/ot-harjoitustyo/releases/tag/viikko5)
 
 [Viikko 6](https://github.com/HiskiR/ot-harjoitustyo/releases/tag/Viikko6)
+
+[Loppupalautus](https://github.com/HiskiR/ot-harjoitustyo/releases/tag/viikko7)
 ## Komentorivitoiminnot
 
 ### Testaus
