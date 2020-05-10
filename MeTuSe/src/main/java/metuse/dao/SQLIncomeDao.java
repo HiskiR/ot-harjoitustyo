@@ -40,6 +40,7 @@ public class SQLIncomeDao implements IncomeDao {
 
     @Override
     public List<Income> getUserIncomes(int id) throws SQLException {
+        incomes = new ArrayList<>();
         Connection c = db.getConnection();
         PreparedStatement s = c.prepareStatement("SELECT * FROM Incomes WHERE user_id = ?");
         s.setInt(1, id);
