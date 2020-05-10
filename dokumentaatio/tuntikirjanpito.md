@@ -10,4 +10,5 @@
 | 28.4  |  2   |  tulojen ja menojen summat, ui otsikot ja takaisin-napit |
 | 28.4  |  8   |  testaus, javadoc, arkkitehtuurikuvaus ja käyttöohje |
 | 8.5   |  3   |  testejä |
-| yht   |  34  |  | 
+| 10.5  |  1   |  testidokumentaatio ja viimeistelyt |
+| yht   |  35  |  | 
