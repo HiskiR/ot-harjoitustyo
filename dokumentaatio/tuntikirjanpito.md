@@ -9,4 +9,5 @@
 | 22.4  |  8   |  tulojen ja menojen näyttö |
 | 28.4  |  2   |  tulojen ja menojen summat, ui otsikot ja takaisin-napit |
 | 28.4  |  8   |  testaus, javadoc, arkkitehtuurikuvaus ja käyttöohje |
-| yht   |  31  |  | 
+| 8.5   |  3   |  testejä |
+| yht   |  34  |  | 
