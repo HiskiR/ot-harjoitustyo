@@ -1,6 +1,6 @@
 # Testausdokumentti
 
-Ohjelmaa on testatattu automatisoiduilla JUnit-testeillä sekä manuaalisilla testeillä.
+Ohjelmaa on testattu automatisoiduilla JUnit-testeillä sekä manuaalisilla testeillä.
 
 ## JUnit-testit
 
